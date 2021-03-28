@@ -1,6 +1,6 @@
 import unittest
 from random import randint
-from pieces import PieceBase, Snake, Ladder
+from pieces import PieceBase, Snake, Ladder, Marker
 
 
 class PieceBaseTests:
@@ -117,6 +117,35 @@ class TestLadder(PieceBaseTests.BaseTests):
             self.assertRaises(ValueError, self.piece, start_pos, start_pos)
             return False
         return True
+
+
+class TestMarker(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.piece = Marker
+
+    def test_marker(self):
+        positions = [-2, -1, 0, 1, 2, 3, 4, 5, 50, 100]
+        for position in positions:
+            # Testing constructor
+            if position < 0:
+                self.assertRaises(ValueError, self.piece, position)
+            # Testing getter methods
+            else:
+                piece = self.piece(position)
+                self.assertEqual(position, piece.get_position(), "Position is set to {}, expected {}"
+                                 .format(piece.get_position(), position))
+
+    def test_setter(self):
+        # Testing setter methods
+        piece = self.piece(0)
+        new_pos = randint(-100, 100)
+        if new_pos < 0:
+            self.assertRaises(ValueError, piece.set_position, new_pos)
+        else:
+            piece.set_position(new_pos)
+            self.assertEqual(new_pos, piece.get_position(), "Position is set to {}, expected {}"
+                             .format(piece.get_position(), new_pos))
 
 
 if __name__ == '__main__':

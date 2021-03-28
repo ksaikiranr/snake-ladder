@@ -105,3 +105,22 @@ class Ladder(PieceBase):
             raise ValueError("For a Ladder ending position {} should be greater than starting position {}"
                              .format(pos_end, pos_start))
 
+
+class Marker:
+
+    def __init__(self, pos):
+        Marker.validate_pos(pos)
+        self.pos = pos
+
+    @staticmethod
+    def validate_pos(pos):
+        if pos < 0:
+            raise ValueError("Position should be greater than 0")
+        return
+
+    def set_position(self, val):
+        Marker.validate_pos(val)
+        self.pos = val
+
+    def get_position(self):
+        return self.pos
