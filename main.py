@@ -1,5 +1,4 @@
 import json
-
 from game import SnakeLadderGame
 
 SNAKES_CONFIG = './resources/snakes_config.json'

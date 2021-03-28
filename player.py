@@ -1,8 +1,9 @@
 from pieces import Marker
 
+
 class Player:
 
-    def __init__(self, name: str, position: int =0):
+    def __init__(self, name: str, position: int = 0):
         Player.validate(name, position)
         self.player_name = name
         self.__marker = Marker(position)
