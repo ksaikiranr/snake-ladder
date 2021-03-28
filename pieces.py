@@ -63,6 +63,7 @@ class Snake(PieceBase):
         :param pos_start: starting position
         :param pos_end:  ending position
         """
+        Snake.validate_pos(pos_start, pos_end)
         super().__init__(pos_start, pos_end)
 
     @staticmethod
@@ -73,8 +74,8 @@ class Snake(PieceBase):
         :param pos_end: ending position
         :return: None
         """
-        super().validate_pos(pos_start, pos_end)
-        if pos_end >= pos_start:
+        PieceBase.validate_pos(pos_start, pos_end)
+        if pos_start <= pos_end:
             raise ValueError("For a Snake ending position {} should be lesser than starting position {}"
                              .format(pos_end, pos_start))
         return
@@ -88,6 +89,7 @@ class Ladder(PieceBase):
         :param pos_start: starting position
         :param pos_end:  ending position
         """
+        Ladder.validate_pos(pos_start, pos_end)
         super().__init__(pos_start, pos_end)
 
     @staticmethod
@@ -98,7 +100,8 @@ class Ladder(PieceBase):
         :param pos_end: ending position
         :return: None
         """
-        super().validate_pos(pos_start, pos_end)
+        PieceBase.validate_pos(pos_start, pos_end)
         if pos_start >= pos_end:
             raise ValueError("For a Ladder ending position {} should be greater than starting position {}"
                              .format(pos_end, pos_start))
+
