@@ -1,5 +1,7 @@
 import json
 
+from game import SnakeLadderGame
+
 SNAKES_CONFIG = './resources/snakes_config.json'
 LADDERS_CONFIG = './resources/ladders_config.json'
 
@@ -28,7 +30,10 @@ if __name__ == '__main__':
 
     # Read snake and ladder configurations
     snakes_config = get_snakes_config()
-    print(snakes_config)
-
     ladders_config = get_ladders_config()
-    print(ladders_config)
+
+    board_size = 100
+    player_name = "Sai Kiran"
+
+    snake_ladder_game = SnakeLadderGame(board_size, player_name, snakes_config, ladders_config)
+    snake_ladder_game.start_game()
