@@ -1,20 +1,25 @@
-from crooked_dice import CrookedDice
+from dice import Dice, CrookedDice
 from player import Player
 from pieces import Snake, Ladder
+
 
 class SnakeLadderException(Exception):
 
     def __init__(self, msg):
         Exception.__init__(self, msg)
 
+
 class SnakeLadderGame:
 
-    def __init__(self, board_size, player_name, snakes_config, ladders_config):
+    def __init__(self, board_size, player_name, snakes_config, ladders_config, is_dice_crooked):
         self.board_size = board_size
         self.snakes = self.load_snakes(snakes_config)
         self.ladders = self.load_ladders(ladders_config)
         self.player = Player(player_name)
-        self.dice = CrookedDice(6)
+        if is_dice_crooked:
+            self.dice = CrookedDice(6)
+        else:
+            self.dice = Dice(6)
 
     def load_snakes(self, snakes_data):
         snakes = []

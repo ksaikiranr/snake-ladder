@@ -33,6 +33,7 @@ if __name__ == '__main__':
 
     board_size = 100
     player_name = "Sai Kiran"
+    is_crooked_dice = False
 
-    snake_ladder_game = SnakeLadderGame(board_size, player_name, snakes_config, ladders_config)
+    snake_ladder_game = SnakeLadderGame(board_size, player_name, snakes_config, ladders_config, is_crooked_dice)
     snake_ladder_game.start_game()
